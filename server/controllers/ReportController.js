@@ -8,6 +8,9 @@ class ReportController {
         Report.findAll({
                 where: {
                     user_id: request.userData.id
+                },
+                include: {
+                    model: Country
                 }
             })
             .then(result => {
@@ -16,7 +19,8 @@ class ReportController {
                     data_response.push({
                         id: element.id,
                         cases: element.report,
-                        countryId: element.countryId
+                        countryId: element.countryId,
+                        countryName: element.Country.name
                     })
                 })
 

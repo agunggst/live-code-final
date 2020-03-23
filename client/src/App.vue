@@ -1,32 +1,42 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="app">
+        <header>
+            <h4>COVID-19</h4>
+            <ul class="middle-nav">
+                <li v-if="$store.state.isLogin">
+                    <router-link to="/">
+                        Countries
+                    </router-link>
+                </li>
+                <li v-if="$store.state.isLogin">
+                    <router-link to="/report">
+                        Reports
+                    </router-link>
+                </li>
+            </ul>
+            <ul class="right-nav">
+                <li v-if="!$store.state.isLogin">
+                    <router-link to="/login">
+                        <button>Login</button>
+                    </router-link>
+                </li>
+                <li v-if="$store.state.isLogin">
+                    <button v-on:click="logout">Logout</button>
+                </li>
+            </ul>
+        </header>
+        <router-view />
     </div>
-    <router-view/>
-  </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<script>
+export default {
+    name: 'App',
+    methods: {
+        logout() {
+            localStorage.removeItem('token');
+            this.$store.commit('setLogout');
+            this.$router.push({path: '/login'});
+        }
+    }
+};
+</script>

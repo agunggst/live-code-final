@@ -1,0 +1,41 @@
+body {
+  margin: 0px;
+  background-color: white;
+}
+
+header {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6464ff;
+}
+header h4 {
+  padding: 0px;
+  margin: 0px;
+}
+header ul {
+  list-style: none;
+}
+header ul li {
+  display: inline;
+}
+header ul li a {
+  text-decoration: none;
+}
+
+.user-access {
+  max-width: 500px;
+  margin: 5rem auto;
+  background-color: #6464ff;
+  padding: 30px;
+}
+.user-access input {
+  width: 95%;
+  margin-top: 10px;
+}
+.user-access button {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
