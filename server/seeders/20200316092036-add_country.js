@@ -10,8 +10,7 @@ module.exports = {
       */
     return queryInterface.bulkInsert(
       'Countries',
-      [
-        {
+      [{
           name: 'China',
           cases: 80860,
           deaths: 3213,
@@ -1275,8 +1274,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date()
         }
-      ],
-      {}
+      ], {}
     );
   },
 
