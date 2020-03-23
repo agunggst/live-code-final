@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-app.get('/')
+app.use('/', require('./router'))
 
 app.listen(port, () => {
     console.log('Listening on port: ', port)
