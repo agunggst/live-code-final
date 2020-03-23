@@ -12,6 +12,7 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 app.use('/', require('./router'))
+app.use(require('./middlewares/errorHandler'))
 
 app.listen(port, () => {
     console.log('Listening on port: ', port)

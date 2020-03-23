@@ -14,6 +14,7 @@ class ReportController {
                 let data_response = []
                 result.forEach(element => {
                     data_response.push({
+                        id: element.id,
                         cases: element.report,
                         countryId: element.countryId
                     })
@@ -93,13 +94,17 @@ class ReportController {
             .then(result => {
                 if (result) {
                     data_country = result
-                    return Country.update({
+                    return Promise.all([Country.update({
                         cases: data_country.cases - data_report.report
                     }, {
                         where: {
                             id: data_country.id
                         }
-                    })
+                    }), Report.destroy({
+                        where: {
+                            id: request.params.id
+                        }
+                    })])
                 } else {
                     throw {
                         code: 404,
